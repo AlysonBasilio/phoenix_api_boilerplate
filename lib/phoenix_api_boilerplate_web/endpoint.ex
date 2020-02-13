@@ -7,7 +7,7 @@ defmodule PhoenixApiBoilerplateWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_phoenix_api_boilerplate_key",
-    signing_salt: "wteVfSx1"
+    signing_salt: "h2e24453"
   ]
 
   socket "/socket", PhoenixApiBoilerplateWeb.UserSocket,
@@ -27,8 +27,6 @@ defmodule PhoenixApiBoilerplateWeb.Endpoint do
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
   if code_reloading? do
-    socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket
-    plug Phoenix.LiveReloader
     plug Phoenix.CodeReloader
   end
 

@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  api:
+    build: .
+    container_name: "phoenix_api_boilerplate"
+    ports:
+      - "4000:4000"
+    volumes:
+      - .:/app
+    links:
+      - postgres
+    command: ["mix", "phx.server"]
+    environment:
+      PGUSER: postgres
+      PGPASSWORD: postgres
+      PGDATABASE: phoenix_api_boilerplate_dev
+      PGPORT: 5432
+      PGHOST: postgres
+  postgres:
+    image: postgres:12.1-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /var/lib/postgresql/data/pgdata
+    restart: always
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
