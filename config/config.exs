@@ -13,10 +13,10 @@ config :phoenix_api_boilerplate,
 # Configures the endpoint
 config :phoenix_api_boilerplate, PhoenixApiBoilerplateWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "m7EV3eGAZRqmeACFv61gOt40IKEip6zLjzNTNnAhRqJpiv32cLP18MDdkfPU+e2a",
-  render_errors: [view: PhoenixApiBoilerplateWeb.ErrorView, accepts: ~w(html json)],
+  secret_key_base: "rL6eXVYF6+gTPylPfmmlodccalvSLeZ3mhHMZCLUABk4srHFd9QrkQdlRwStoqIZ",
+  render_errors: [view: PhoenixApiBoilerplateWeb.ErrorView, accepts: ~w(json)],
   pubsub: [name: PhoenixApiBoilerplate.PubSub, adapter: Phoenix.PubSub.PG2],
-  live_view: [signing_salt: "Fd04tYhQ"]
+  live_view: [signing_salt: "vQYsJXIU"]
 
 # Configures Elixir's Logger
 config :logger, :console,

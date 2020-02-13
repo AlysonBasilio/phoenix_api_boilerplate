@@ -2,10 +2,10 @@ use Mix.Config
 
 # Configure your database
 config :phoenix_api_boilerplate, PhoenixApiBoilerplate.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "phoenix_api_boilerplate_dev",
-  hostname: "localhost",
+  username:  System.get_env("PGUSER") || "postgres",
+  password:  System.get_env("PGPASSWORD") || "postgres",
+  database:  System.get_env("PGDATABASE") || "phoenix_api_boilerplate_dev",
+  hostname:  System.get_env("PGHOST") || "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
@@ -45,17 +45,6 @@ config :phoenix_api_boilerplate, PhoenixApiBoilerplateWeb.Endpoint,
 # If desired, both `http:` and `https:` keys can be
 # configured to run both http and https servers on
 # different ports.
-
-# Watch static and templates for browser reloading.
-config :phoenix_api_boilerplate, PhoenixApiBoilerplateWeb.Endpoint,
-  live_reload: [
-    patterns: [
-      ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
-      ~r"priv/gettext/.*(po)$",
-      ~r"lib/phoenix_api_boilerplate_web/(live|views)/.*(ex)$",
-      ~r"lib/phoenix_api_boilerplate_web/templates/.*(eex)$"
-    ]
-  ]
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
