@@ -2,7 +2,6 @@ FROM elixir:1.10.1-alpine
 
 # Create app directory and copy the Elixir projects into it
 RUN mkdir /app
-COPY ./mix.exs ./mix.lock /app/
 WORKDIR /app
 
 # Install hex package manager
