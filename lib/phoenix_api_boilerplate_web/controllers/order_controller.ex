@@ -13,6 +13,8 @@ defmodule PhoenixApiBoilerplateWeb.OrderController do
 
   def create(conn, %{"order" => order_params}) do
     with {:ok, %Order{} = order} <- V1.create_order(order_params) do
+      PhoenixApiBoilerplate.AMQPWorker.publish(Jason.encode!(%{id: order.id, status: order.status}),  "order_created_exchange")
+
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.order_path(conn, :show, order))
@@ -29,6 +31,8 @@ defmodule PhoenixApiBoilerplateWeb.OrderController do
     order = V1.get_order!(id)
 
     with {:ok, %Order{} = order} <- V1.update_order(order, order_params) do
+      PhoenixApiBoilerplate.AMQPWorker.publish(Jason.encode!(%{id: order.id, status: order.status}),  "order_updated_exchange")
+
       render(conn, "show.json", order: order)
     end
   end

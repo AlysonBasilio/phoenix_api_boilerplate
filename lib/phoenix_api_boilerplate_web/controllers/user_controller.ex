@@ -29,6 +29,8 @@ defmodule PhoenixApiBoilerplateWeb.UserController do
     user = V1.get_user!(id)
 
     with {:ok, %User{} = user} <- V1.update_user(user, user_params) do
+      PhoenixApiBoilerplate.AMQPWorker.publish(Jason.encode!(%{id: user.id, status: user.status}),  "user_updated_exchange")
+
       render(conn, "show.json", user: user)
     end
   end
