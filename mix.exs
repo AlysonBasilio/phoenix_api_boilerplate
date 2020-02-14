@@ -19,7 +19,6 @@ defmodule PhoenixApiBoilerplate.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      applications: [:amqp],
       mod: {PhoenixApiBoilerplate.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
