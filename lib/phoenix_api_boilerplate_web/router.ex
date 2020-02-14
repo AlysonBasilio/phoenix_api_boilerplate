@@ -5,6 +5,11 @@ defmodule PhoenixApiBoilerplateWeb.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/", PhoenixApiBoilerplateWeb do
+    pipe_through :api
+    get "/", DefaultController, :index
+  end
+
   scope "/api", PhoenixApiBoilerplateWeb do
     pipe_through :api
   end
