@@ -29,9 +29,10 @@ defmodule PhoenixApiBoilerplateWeb.OrderController do
 
   def update(conn, %{"id" => id, "order" => order_params}) do
     order = V1.get_order!(id)
+    old_status = order.status
 
     with {:ok, %Order{} = order} <- V1.update_order(order, order_params) do
-      PhoenixApiBoilerplate.AMQPWorker.publish(Jason.encode!(%{id: order.id, status: order.status}),  "order_updated_exchange")
+      PhoenixApiBoilerplate.AMQPWorker.publish(Jason.encode!(%{id: order.id, old_status: old_status, status: order.status}),  "order_updated_exchange")
 
       render(conn, "show.json", order: order)
     end
