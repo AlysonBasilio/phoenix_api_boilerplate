@@ -10,6 +10,9 @@ To start your Phoenix server:
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
+To open application console:
+  * Setup database `docker-compose exec -it phoenix_api_boilerplate iex -S mix`
+
 ## Learn more
 
   * Official website: https://www.phoenixframework.org/
