@@ -10,6 +10,7 @@ services:
       - .:/app
     links:
       - postgres
+      - rabbitmq
     command: ["mix", "phx.server"]
     environment:
       PGUSER: postgres
@@ -26,3 +27,11 @@ services:
     restart: always
     volumes:
       - ./pgdata:/var/lib/postgresql/data
+  rabbitmq:
+    image: rabbitmq:3.8.2-management-alpine
+    ports:
+      - 15672:15672
+      - 5672:5672
+    environment:
+      RABBITMQ_DEFAULT_USER: user
+      RABBITMQ_DEFAULT_PASS: password
