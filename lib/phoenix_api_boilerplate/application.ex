@@ -11,9 +11,10 @@ defmodule PhoenixApiBoilerplate.Application do
       # Start the Ecto repository
       PhoenixApiBoilerplate.Repo,
       # Start the endpoint when the application starts
-      PhoenixApiBoilerplateWeb.Endpoint
+      PhoenixApiBoilerplateWeb.Endpoint,
       # Starts a worker by calling: PhoenixApiBoilerplate.Worker.start_link(arg)
       # {PhoenixApiBoilerplate.Worker, arg},
+      PhoenixApiBoilerplate.AMQPWorker
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
