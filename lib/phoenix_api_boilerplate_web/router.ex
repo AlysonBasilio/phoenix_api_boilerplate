@@ -12,5 +12,10 @@ defmodule PhoenixApiBoilerplateWeb.Router do
 
   scope "/api", PhoenixApiBoilerplateWeb do
     pipe_through :api
+    scope "/v1" do
+      resources "/offers", OfferController, except: [:new, :edit]
+      resources "/orders", OrderController, except: [:new, :edit]
+      resources "/users", UserController, except: [:new, :edit]
+    end
   end
 end
