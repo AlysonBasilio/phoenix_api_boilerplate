@@ -29,3 +29,6 @@ phoenix_api_boilerplate-*.tar
 
 # Ignore local postgres files
 /pgdata/
+
+# Ignore logs
+/log/
